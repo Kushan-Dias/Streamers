@@ -1,0 +1,11 @@
+// Variables
+
+
+// Variable overrides
+$sidebar-width: 18.5rem;
+$sidebar-widths: (
+  sm: 18.5rem,
+  lg: 20rem,
+  xl: 24rem
+);
+$swal2-confirm-button-background-color: var(--cui-primary) !important;

@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Providers;
+
+use App\Http\Middleware\EnsureTenantIsActive;
+use App\Http\Middleware\Localization;
+use App\Services\CustomModules;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+
+class RouteServiceProvider extends ServiceProvider
+{
+  /**
+   * The controller namespace for the application.
+   *
+   * When present, controller route declarations will automatically be prefixed with this namespace.
+   *
+   * @var string|null
+   */
+  // protected $namespace = 'App\\Http\\Controllers';
+
+  /**
+   * Define your route model bindings, pattern filters, etc.
+   *
+   * @return void
+   */
+  public function boot()
+  {
+    $this->configureRateLimiting();
+
+    $this->mapWebRoutes();
+    $this->mapApiRoutes();
+  }
+
+  protected function mapWebRoutes()
+  {
+    foreach ($this->centralDomains() as $domain) {
+      Route::middleware(['web', Localization::class])
+        ->domain($domain)
+        ->namespace($this->namespace)
+        ->group(base_path('routes/web.php'));
+    }
+  }
+
+  protected function mapApiRoutes()
+  {
+    foreach ($this->centralDomains() as $domain) {
+      Route::prefix('api')
+        ->domain($domain)
+        ->middleware(['api', Localization::class])
+        ->namespace($this->namespace)
+        ->group(base_path('routes/api.php'));
+    }
+  }
+
+  protected function centralDomains(): array
+  {
+    return config('tenancy.central_domains');
+  }
+
+  /**
+   * Configure the rate limiters for the application.
+   *
+   * @return void
+   */
+  protected function configureRateLimiting()
+  {
+    RateLimiter::for('api', function (Request $request) {
+      return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+    });
+  }
+}

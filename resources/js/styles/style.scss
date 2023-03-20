@@ -1,0 +1,22 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+@import '~sweetalert2/src/variables';
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+@import '~sweetalert2/src/sweetalert2';
+
+// Import Chart.js Tooltips
+@import "~@coreui/chartjs/scss/tooltips";
+
+@import "layout";
+
+// If you want to add something do it here
+@import "custom";

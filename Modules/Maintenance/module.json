@@ -1,0 +1,26 @@
+{
+  "name": "Maintenance",
+  "alias": "maintenance",
+  "title": "",
+  "description": "Manage maintenance and repairs of the tenant building and ensure facilities are tidy and functional.",
+  "version": "1.0.0",
+  "author": "Pasan Godamune",
+  "repository": "",
+  "homepage": "",
+  "issues": "",
+  "license": "",
+  "keywords": [
+    "maintenance",
+    "repair",
+    "clean",
+    "tidy"
+  ],
+  "priority": 0,
+  "providers": [
+    "Modules\\Maintenance\\Providers\\MaintenanceServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": [],
+  "minimumCoreVersion": ""
+}

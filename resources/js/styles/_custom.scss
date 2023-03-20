@@ -1,0 +1,88 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #D8D8D8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BEBEBE;
+}
+
+.code {
+  font-size: 0.8rem;
+  font-family: Consolas, serif;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebar {
+  .nav-link {
+    font-size: 0.95rem;
+  }
+}
+
+button, input, select, textarea, .page-link {
+  box-shadow: none !important;
+}
+
+.validation-error {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.1;
+  color: red;
+}
+
+// Vue DatePicker Next
+.mx-input {
+  height: 38px !important;
+}
+
+// Vue Carousel
+.carousel {
+  .carousel__prev {
+    left: 25px;
+  }
+
+  .carousel__next {
+    right: 25px;
+  }
+
+  .carousel__prev, .carousel__next {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .carousel__prev, .carousel__next {
+      visibility: visible;
+    }
+  }
+}
+
+// VueEasyLightbox
+.vel-modal {
+  .vel-btns-wrapper {
+    btn__prev, btn__next {
+      display: flex;
+      padding: 1.5rem;
+      background-color: var(--cui-secondary);
+    }
+  }
+}
+
+.card {
+  .card-header, .card-footer {
+    padding: 1rem;
+    border-top: none;
+    border-bottom: none;
+    background-color: var(--cui-card-color);
+  }
+}
