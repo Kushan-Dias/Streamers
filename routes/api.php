@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Services\CustomModules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware([])->group(function () {
+  Route::get('/profile', [ProfileController::class, 'getProfileData']);
   Route::get('/login', function () {
     return redirect('/login');
   })->name('login');
@@ -115,3 +117,10 @@ Route::middleware([])->group(function () {
     });
   });
 });
+
+
+  //kushan
+
+//added by kushan for streamer profile controling
+
+

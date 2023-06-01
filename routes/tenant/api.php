@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureContractIsSigned;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,20 @@ use Illuminate\Support\Facades\Route;
 | Feel free to customize them however you want. Good luck!
 |
 */
-
+// Route::prefix('streamer')->group(function(){
+//   Route::get('/profile/1', [ProfileController::class, 'getProfileData']);
+//   });
 Route::middleware(['api'])->group(function () {
+
+
+  //kushan
+
+  Route::prefix('streamer')->group(function(){
+  Route::get('/profile/{id}', [ProfileController::class, 'getProfileData']);
+
+  });
+
+
   Route::get('/', function () {
     return __("This is your multi-tenant API. The id of the current tenant is :tenant_id", ["tenant_id" => tenant('id')]);
   });

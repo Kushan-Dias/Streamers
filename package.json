@@ -61,6 +61,7 @@
     "wretch": "^1.7.7"
   },
   "dependencies": {
-    "chokidar": "^3.5.2"
+    "chokidar": "^3.5.2",
+    "vue-avatar": "^2.3.3"
   }
 }

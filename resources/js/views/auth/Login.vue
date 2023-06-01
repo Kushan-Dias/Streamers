@@ -116,7 +116,7 @@ export default {
         (response) => {
           this.isLoading = false;
           this.$toast.clear();
-          this.$router.push('/dashboard');
+          this.$router.push('/dashboard');//changed by kushan 
         },
         (error) => {
           this.isLoading = false;

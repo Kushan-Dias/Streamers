@@ -10,6 +10,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 
 import { PERMISSIONS } from "../utils/app.permissions";
 
+
 let routes = [
   {
     path: '/',
@@ -128,8 +129,29 @@ let routes = [
                 : next({ name: 'Dashboard' });
             },
           },
+         
         ],
       },
+
+       /*streamer dashboard path created by Kushan*/ 
+       {
+        path: '/streamer',
+        name: 'Streamer Dashboard',
+        component: () => import('../views/StreamerDashboard.vue'),
+        /*beforeEnter: (to, from, next) => {
+          hasValidAccess(PERMISSIONS.LIST_TENANTS)
+            ? next()
+            : next({ name: 'Dashboard' });
+        },*/
+      },
+
+      /*streamer Profile path created by Kushan*/
+      {
+        path: '/streamer/profile/:id',
+        name: 'Streamer Profile',
+        component: () => import('../views/tenants/users/Streamers/streamerProfile.vue'),
+      },
+
       {
         path: '/users',
         name: 'Users',

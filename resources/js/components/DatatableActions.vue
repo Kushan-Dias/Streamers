@@ -1,4 +1,4 @@
-<template>
+<template><!--dynamic routing userprofiles #kushan--->
   <CButtonGroup role="group">
     <CTooltip :content="$t('actions.view')" placement="top">
       <template #toggler="{ on }">

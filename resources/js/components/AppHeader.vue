@@ -15,7 +15,7 @@
           <CNavLink href="/users">{{ $tc('labels.user', 2) }}</CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">{{ $tc('labels.setting', 2) }}</CNavLink>
+          <CNavLink href="/streamer">{{ $tc('labels.streamer', 2) }}</CNavLink>
         </CNavItem>
       </CHeaderNav>
       <CHeaderNav>

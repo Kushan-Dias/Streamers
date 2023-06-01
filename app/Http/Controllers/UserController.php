@@ -144,7 +144,7 @@ class UserController extends BaseController
       'address_two' => ['required', 'string'],
       'role' => ['required', 'integer'],
     ];
-
+  
     $messages = [
       'confirm_password.same' => 'Passwords do not match',
     ];
