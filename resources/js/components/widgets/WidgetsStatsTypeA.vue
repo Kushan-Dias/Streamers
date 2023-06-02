@@ -3,12 +3,9 @@
     <CCol :xs="3">
       <CWidgetStatsA class="mb-4" color="primary">
         <template #value
-        >26K
-          <span class="fs-6 fw-normal">
-            (-12.4% <CIcon icon="cil-arrow-bottom"/>)
-          </span>
+        >Rs:{{ sumValue }}.00
         </template>
-        <template #title>Users</template>
+        <template #title>Total sale</template>
         <template #action>
           <CDropdown placement="bottom-end">
             <CDropdownToggle
@@ -98,12 +95,9 @@
     <CCol :xs="3">
       <CWidgetStatsA class="mb-4" color="info">
         <template #value
-        >$6.200
-          <span class="fs-6 fw-normal">
-            (40.9% <CIcon icon="cil-arrow-top"/>)
-          </span>
+        >{{ ordercount }}
         </template>
-        <template #title>Income</template>
+        <template #title>Order Count</template>
         <template #action>
           <CDropdown placement="bottom-end">
             <CDropdownToggle
@@ -192,12 +186,10 @@
     <CCol :xs="3">
       <CWidgetStatsA class="mb-4" color="warning">
         <template #value
-        >2.49%
-          <span class="fs-6 fw-normal">
-            (84.7% <CIcon icon="cil-arrow-top"/>)
-          </span>
+        >Rs:{{ discounttot }}.00
+
         </template>
-        <template #title>Conversion Rate</template>
+        <template #title>Total Discount</template>
         <template #action>
           <CDropdown placement="bottom-end">
             <CDropdownToggle
@@ -273,12 +265,12 @@
     <CCol :xs="3">
       <CWidgetStatsA class="mb-4" color="danger">
         <template #value
-        >44K
+        >{{couponcode}}
           <span class="fs-6 fw-normal">
             (-23.6% <CIcon icon="cil-arrow-bottom"/>)
           </span>
         </template>
-        <template #title>Sessions</template>
+        <template #title>{{count}}</template>
         <template #action>
           <CDropdown placement="bottom-end">
             <CDropdownToggle
@@ -375,6 +367,34 @@ export default {
   name: 'WidgetsStatsA',
   components: {
     CChart,
+  },
+  data() {
+    return {
+      sumValue: null,
+      ordercount:null,
+      discounttot:null,
+      couponcode:null,
+      count:null,
+    };
+  },
+  mounted() {
+    this.fetchSum();
+  },
+  methods: {
+    fetchSum() {
+      fetch('http://yugo.localhost:8000/api/product/stats')
+        .then(response => response.json())
+        .then(data => {
+          this.sumValue = data.sum;
+          this.ordercount = data.ordercount;
+          this.discounttot = data.discounttot;
+          this.couponcode = data.couponcode;
+          this.count = data.count;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
   },
 };
 </script>
