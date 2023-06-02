@@ -118,4 +118,10 @@ Route::middleware(['api'])->group(function () {
       return response()->json($data);
     });
   });
+  Route::prefix('product')->group(function(){
+    Route::post('/sellproduct', [SellItemController::class, 'sell']);
+    Route::post('/test', [SellItemController::class, 'test']);
+    Route::get('/productlist', [SellItemController::class, 'index']);
+    Route::get('/stats', [SellItemController::class, 'stats']);
+    });
 });
